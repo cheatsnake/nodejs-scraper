@@ -17,7 +17,8 @@ const  PAGE_OPTIONS = {
     timeout: 3000000
 }
 
-async function getPageContent(url) {
+
+const getPageContent = async (url) => {
     try {
         const browser = await puppeteer.launch(LAUNCH_OPTIONS);
         const page = await browser.newPage(PAGE_OPTIONS);
@@ -26,7 +27,7 @@ async function getPageContent(url) {
         browser.close();
         return content;
     } catch (error) {
-        throw error
+        throw error;
     }
 }
 

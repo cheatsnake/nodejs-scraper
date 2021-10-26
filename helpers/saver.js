@@ -1,15 +1,14 @@
 const path = require('path');
 const fs = require('fs');
 
-async function saveData(data) {
-    const location = path.join(__dirname, '..', 'data', 'data.json');
+async function saveData(data, name) {
+    const location = path.join(__dirname, '..', 'data', `${name}.json`);
     
     return new Promise((resolve, reject) => {
-        fs.appendFile(location, JSON.stringify(data) + ', ', err => {
+        fs.writeFile(location, JSON.stringify(data), err => {
             if (err) {
                 return reject(err);
             }
-            console.log('Data saved.');
             resolve();
         })
     })
